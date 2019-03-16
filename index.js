@@ -1,6 +1,7 @@
 const express = require('express')
 const swagger = require('swagger-express-middleware')
 const app = express()
+const router = express.Router()
 
 swagger('PetStore.yaml', app, (_, middleware) => {
   app.use(
@@ -12,7 +13,7 @@ swagger('PetStore.yaml', app, (_, middleware) => {
     // middleware.mock()
   )
 
-  app.get('/pets', (req, res) => {
+  router.get('/pets', (req, res) => {
     res.send([
       {
         id: 59,
@@ -21,6 +22,7 @@ swagger('PetStore.yaml', app, (_, middleware) => {
       }
     ])
   })
+  app.use('/api', router)
 
   app.listen(8000)
 })
