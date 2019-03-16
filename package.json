@@ -1,0 +1,24 @@
+{
+  "name": "swagger-api-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test-generate": "npx oatts generate --host localhost:8000 -s ./PetStore.yaml -w ./test/generated",
+    "test": "npm run test-generate && mocha index.js test/generated/* --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "swagger-express-middleware": "^2.0.1"
+  },
+  "devDependencies": {
+    "chakram": "^1.5.0",
+    "mocha": "^6.0.2",
+    "oatts": "^1.2.4",
+    "standard": "^12.0.1"
+  }
+}
